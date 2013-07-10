@@ -117,9 +117,14 @@ function reboot_image() {
 
 EXE_VBOXLINUX=/media/cdrom/VBoxLinuxAdditions.run
 function install_guestadditions() {
+    if [ ! -d /media/cdrom ]; then
+        mkdir /media/cdrom
+    fi
+
+    mount -t iso9660 -r /dev/cdrom /media/cdrom
+
     if [ -f $EXE_VBOXLINUX ]; then
         echo -e $BG_GREEN 'Installing VirtualBox Guest Additions' $COLOR_RESET
-        mount -t iso9660 -r /dev/cdrom /media/cdrom
         $EXE_VBOXLINUX
     else
         echo -e $BG_RED $EXE_VBOXLINUX $COLOR_RESET '<-- Not Found\n'
