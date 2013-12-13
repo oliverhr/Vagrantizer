@@ -6,4 +6,4 @@ Vagrantizer is an small bash script for automate the simple task of craeating Va
 ##Tested with:
 
 - Debian Wheezy 7.1.0
-- Ubuntu Serer 13.04
+- Ubuntu Server 13.04/13.10
