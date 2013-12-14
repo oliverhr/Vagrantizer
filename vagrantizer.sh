@@ -111,6 +111,25 @@ function prepare_to_compile() {
     apt-get autoremove -y
 }
 
+function speed_grub() {
+    # Remove 5s grub timeout to speed up booting
+    cat <<EOF > /etc/default/grub
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of options in this file, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+GRUB_CMDLINE_LINUX=""
+
+EOF
+
+    update-grub
+}
+
 function reboot_image() {
     shutdown -h -r now
 }
@@ -177,4 +196,5 @@ hg_message 'Install GuestAdditions'
 install_guestadditions
 
 hg_message 'Reestart image'
+speed_grub
 reboot_image
