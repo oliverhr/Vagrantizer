@@ -24,3 +24,11 @@ __Remember to setup your machine as conventionally__
   + Root Password: vagrant
   + Main account login: vagrant
   + Main account password: vagrant
+
+After all package as a Box:
+
+Ex.
+> vagrant package --base wheezy --output debian-7.2.0-i368.box
+
+Replace [wheezy] with your virtualbox machine [--output ...] is optional, but you get a package.box
+
