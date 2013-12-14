@@ -3,7 +3,7 @@
 # TODO: Add option to skip parts and a menu for run specific tasks
 
 # ------------------------------
-# Configuración de colores
+# Script colors
 BG_YELLOW="\033[43m\033[30m"
 BG_GREEN="\033[42m\033[30m"
 BG_RED="\033[41m\033[30m"
@@ -106,7 +106,7 @@ function remove_guestadditions() {
 }
 
 function prepare_to_compile() {
-    apt-get install -y build-essential
+    apt-get install -y build-essential dkms
     apt-get install -y linux-headers-$(uname -r)
     apt-get autoremove -y
 }
