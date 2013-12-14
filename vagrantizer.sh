@@ -71,7 +71,7 @@ function install_ruby() {
 SSH_CONFIG_FILE=/etc/ssh/sshd_config
 function install_ssh() {
     apt-get install -y openssh-client openssh-server
-    if [ $(cat $SSH_CONFIG_FILE | grep -c '^Use DNS No') == 0 ]; then
+    if [ $(cat $SSH_CONFIG_FILE | grep -c '^UseDNS No') == 0 ]; then
         echo 'Use DNS no' >> $SSH_CONFIG_FILE
     fi
 }
